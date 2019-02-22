@@ -1,0 +1,25 @@
+{
+  "name": "online_prescription_point",
+  "version": "1.0.0",
+  "description": "this is a node js project for ATP-3 course",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RiazHossainFahad/online_prescription_point.git"
+  },
+  "author": "Fahad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RiazHossainFahad/online_prescription_point/issues"
+  },
+  "homepage": "https://github.com/RiazHossainFahad/online_prescription_point#readme",
+  "dependencies": {
+    "bootstrap": "^3.4.1",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "jquery": "^3.3.1"
+  }
+}

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <script src="/jquery/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <title>Online Prescription Point</title>
+
+    <style>
+    .navbar{
+        margin : 10px;
+        padding: 10px;
+    }
+
+    .btn{
+        width: 20%
+    }
+
+    form{
+        margin: 1%;
+    }
+    </style>
+</head>
+<body>
+  <!--Navigation Bar-->
+  <div class="col-lg-12">
+   <nav class="navbar navbar-inverse">
+       <div class="container-fluid">
+           <div class="navbar-header">
+               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+               </button>
+               <a class="navbar-brand" href="/">Online Prescription Point</a>
+           </div>
+           <div class="collapse navbar-collapse" id="myNavbar">
+               <ul class="nav navbar-nav">
+                   <li><a data-toggle="modal" href="#modal-aboutProject">About Project</a></li>
+                   <li><a data-toggle="modal" href="#modal-contactUs">Contact Us</a></li>
+               </ul>
+               <ul class="nav navbar-nav navbar-right">
+                   <li><a href='/signup' ><span class="glyphicon glyphicon-user"></span> SignUp</a></li>
+                   <li><a href="/login"><span class="glyphicon glyphicon-arrow-left"></span> Login</a></li>
+               </ul>
+           </div>
+
+           <!--Modal For about project.-->
+            <div class="modal fade" id="modal-aboutProject">
+               <div class="modal-dialog">
+                   <div class="modal-content">
+                       <div class="modal-header">
+                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <center><h4 class="modal-title">About Project</h4></center>
+                       </div>
+                       <div class="modal-body">
+                    <h3>Introduction</h3>
+                    <p>
+                      The system serves as an online platform to order medicines and collect them easily at customer’s convenience. The system has multiple types of users like the doctors, patients, pharmacies. It will help patients get their necessary medicines comfortably and reduce hassle. The patients do not need to worry about prescriptions or medicines. The system will send the prescription to the desired pharmacies and the customers will be able to get their medicines. It will make life easier for the patients as well as the other users of the system
+                    </p>
+
+                    <h3>Why we need this system?</h3>
+                    <p>  Medicines play an important role in our life as they help us to stay healthy and at times, save lives. Getting the right medicine at the right time can make the difference between life and death. So, it needs no exaggeration about the significance of these. But sometimes it is hard to find the right medicines due to lack of availability. Again, sophisticated hospitals often sell them at a higher rate which makes it difficult for people to buy. Lack of trust at an unknown pharmacy adds to the problem. Also, sometimes the prescription written by a doctor can be hard to read for a human/patient. In these circumstances, patients need to guess. Often there are long queues in the medicine shops which is very time consuming. Moreover, there is a practice of selling, buying and having medicines without the doctor’s approval or prescription which can cause problems to our health. All these problems can be addressed if the patients can buy their necessary medicines from their convenient pharmacies.</p>
+                       </div>
+                       <div class="modal-footer">
+                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                       </div>
+                   </div>
+               </div>
+            </div>
+           
+            <!-- Modal For Contact us. -->
+           <div class="modal fade" id="modal-contactUs">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                     <center><h4 class="modal-title">Contact Us</h4></center>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="col-2"></div>
+                                    <form action="/contact_us" method="POST" class="form-horizontal" role="form">
+                                    
+                                        <div class="form-group">
+                                            <label class="sr-only" for="">Email</label>
+                                            <input type="email" class="form-control" name="contact_us_email" placeholder="Email Address" required="required">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <textarea name="contact_us_comment" id="about_us_comment" class="form-control" rows="3" placeholder="Enter your query here." required="required"></textarea>
+                                            
+                                        </div>
+                                    
+                                       <center><button type="submit" class="btn btn-primary" >Submit</button></center>
+                                    </form>
+                                    
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                                </div>
+                            </div>
+            </div>
+       </div>
+   </nav>
+</div>
+
+
+<div class="container">
+<div class="row">
+    <div class="col-xs-12">
+                       <!-- Image carousel-->
+                       <div class="container" >
+                       <center><h2 style="color:rgb(48, 121, 72)">Welcome to prescription point</h2></center>
+                            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                              <!-- Indicators -->
+                              <ol class="carousel-indicators">
+                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#myCarousel" data-slide-to="1"></li>
+                                <li data-target="#myCarousel" data-slide-to="2"></li>
+                              </ol>
+                          
+                              <!-- Wrapper for slides -->
+                              <div class="carousel-inner">
+                          
+                                <div class="item active">
+                                  <img src="images/2017-physician-shortage.jpg" alt="Physician" style="width:100%;height: 480px;" >
+                                  <div class="carousel-caption">
+                                    <h3>Physician</h3>
+                                    <p>Doctors are in a row</p>
+                                  </div>
+                                </div>
+                          
+                                <div class="item">
+                                  <img src="images/Kenai-Pharmacy-e1492647043464.jpg" alt="Pharmacy" style="width:100%;height: 480px;">
+                                  <div class="carousel-caption">
+                                    <h3>Pharmacy</h3>
+                                    <p>Life Saving Store</p>
+                                  </div>
+                                </div>
+                              
+                                <div class="item">
+                                  <img src="images/questions-for-new-doctor-inline.jpg" alt="Doctor" style="width:100%;height: 480px;">
+                                  <div class="carousel-caption">
+                                    <h3>Doctor</h3>
+                                    <p>Most valuable person for a patient</p>
+                                  </div>
+                                </div>
+                            
+                              </div>
+                          
+                              <!-- Left and right controls -->
+                              <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                                <span class="sr-only">Previous</span>
+                              </a>
+                              <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                <span class="sr-only">Next</span>
+                              </a>
+                            </div>
+                          </div>    
+
+    </div>
+</div>
+</div>
+
+
+</body>
+</html>
