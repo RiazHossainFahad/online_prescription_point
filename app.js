@@ -5,6 +5,7 @@ var expressSession   = require('express-session');
 var contactUs        = require.main.require('./controllers/contact_us'); 
 var signup           = require.main.require('./controllers/signup'); 
 var login           = require.main.require('./controllers/login'); 
+var home           = require.main.require('./controllers/home'); 
 
 var app     = express();
 
@@ -24,6 +25,7 @@ app.use(expressSession({secret:'super secret',saveUninitialized:false,resave:fal
 
 app.use('/contact_us', contactUs);
 app.use('/signup',signup);                                                                     
+app.use('/home',home);                                                                     
 app.use('/login',login);                                                                                                                                                                    
 
 //ROUTES
