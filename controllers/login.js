@@ -9,12 +9,11 @@ req.session.error = null;
 });
 
 router.post('/',(req,res) => {
-console.log(req.body);
 var sql = "select * from users_info where user_email='"+req.body.u_email+"' and user_password = '"+req.body.u_pass+"'";
 db.getResults(sql,function(results){
  if(results.length > 0){
   console.log("sucessfully login");
-  res.redirect('/');
+  res.redirect('/home');
  }
 
  else{
