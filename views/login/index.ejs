@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <title>Login</title>
+
+ <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+ <script src="/jquery/jquery.min.js"></script>
+ <script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<style>
+button{
+ width: 40%;
+}
+
+form{
+margin-top: 25%;
+margin-right: 2%;
+background: rgba(238, 243, 243, 0.993);
+}
+
+</style>
+
+<script>
+
+$('document').ready(function(){
+
+//for mobile view margin fix
+  window.onresize = function (){
+    if(window.innerWidth<600){
+   $('table').css("margin-top","5%");
+}
+
+else if(window.innerWidth>600){
+  $('table').css("margin-top","25%");
+}
+
+}
+});
+
+</script>
+
+</head>
+<body>
+
+<div class="container">
+<div class="row">
+ 
+ <div class="col-sm-3 col-md-3 col-lg-3"> 
+ </div>
+ 
+ <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+  <form action="#" method="POST" role="form">
+   
+   <!-- <div class="table-responsive">   -->
+ <table class="table table-hover">
+  <thead>
+   <tr>
+    <th><h2 style="text-align: center">Login</h2></th>
+   </tr>
+  </thead>
+  <tbody>
+   
+   <tr>
+    <td>
+     <div class="form-group">
+      <label for="">E-mail Address:</label>
+      <input type="text" class="form-control" name="u_email" placeholder="Enter your E-mail address.">
+     </div>
+    </td>
+   </tr>
+
+   <tr>
+    <td>
+      <div class="form-group">
+        <label for="">Password:</label>
+        <input type="password" class="form-control" name="u_pass" placeholder="Enter your password.">
+       </div>
+    </td>
+   </tr>
+
+   <tr>
+    <td>
+     <center><button type="submit" class="btn btn-primary">Login</button></center>
+    </td>
+   </tr>
+  </tbody>
+ </table>
+   <!-- </div> -->
+ </form>
+  
+ </div>
+ 
+ <div class="col-sm-3 col-md-3 col-lg-3">
+ </div>
+ 
+
+</div>
+</div>
+
+
+</body>
+</html>

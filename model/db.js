@@ -27,7 +27,7 @@ module.exports = {
 		getConnection(function(connection){
 			connection.query(sql, function(err, results){
 				if(err){
-					callback([]);
+					callback(err);
 				}else{
 					callback(results);
 				}

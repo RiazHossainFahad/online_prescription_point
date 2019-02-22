@@ -1,7 +1,10 @@
 //DECLARATION
-var express    = require('express');
-var bodyParser = require('body-parser');
-var contactUs  = require.main.require('./controllers/contact_us') 
+var express          = require('express');
+var bodyParser       = require('body-parser');
+var expressSession   = require('express-session');
+var contactUs        = require.main.require('./controllers/contact_us'); 
+var signup           = require.main.require('./controllers/signup'); 
+var login           = require.main.require('./controllers/login'); 
 
 var app     = express();
 
@@ -11,13 +14,17 @@ app.set('view engine','ejs');
 
 //MIDDLEWARES
 app.use(bodyParser.urlencoded({extended: false}));
-app.use('/bootstrap',express.static(__dirname+'/node_modules/bootstrap/dist/'));
 //to use bootstrap as fake folder name /bootstrap
-app.use('/jquery',express.static(__dirname+'/node_modules/jquery/dist/'));//to use jquery as fake folder name /jquery
+app.use('/bootstrap',express.static(__dirname+'/node_modules/bootstrap/dist/'));
+//to use jquery as fake folder name /jquery
+app.use('/jquery',express.static(__dirname+'/node_modules/jquery/dist/'));
 app.use(express.static("public"));//for static file like images
+app.use(expressSession({secret:'super secret',saveUninitialized:false,resave:false}));
+
+
 app.use('/contact_us', contactUs);
-
-
+app.use('/signup',signup);                                                                     
+app.use('/login',login);                                                                                                                                                                    
 
 //ROUTES
 app.get('/',function(req,res){
@@ -25,7 +32,7 @@ app.get('/',function(req,res){
  res.end();
 });
 
-//server
+//server listen
 app.listen(3000,()=>{
  console.log("server started at port 3000......");
 });

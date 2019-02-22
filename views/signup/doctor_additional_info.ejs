@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <title>Additional Info</title>
+ 
+ <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+ <script src="/jquery/jquery.min.js"></script>
+ <script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<style>
+form{
+ margin: 2%
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="container">
+ <div class="row">
+   <div class="col-sm-3 col-md-3 col-lg-3"> 
+    </div>
+    
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+     <form action="#" method="POST" role="form" class="">
+      
+      <div class="table-responsive">  
+    <table class="table table-bordered table-hover">
+     <thead>
+      <tr>
+       <th><h2 style="text-align: center">Additional info for Doctor</h2></th>
+      </tr>
+     </thead>
+     <tbody>
+      
+      <tr>
+       <td>
+        <div class="form-group">
+         <label for="">Hospital-Name:</label>
+         <input type="text" class="form-control" name="doctor_hospital_name" placeholder="Enter your hospital-name.">
+        </div>
+       </td>
+      </tr>
+   
+      <tr>
+       <td>
+         <div class="form-group">
+           <label for="">Degree:</label>
+           <select name="doctor_degree" class="form-control">
+             <option value="MBBS">MBBS</option>
+             <option value="MBChB">BMBS</option>
+             <option value="MBChB">MBChB</option>
+            </select>
+          </div>
+       </td>
+      </tr>
+      
+      <tr>
+        <td>
+         <div class="form-group">
+          <label for="">License-Number:</label>
+          <input type="text" class="form-control" name="doctor_lic_no" placeholder="Enter your License-Number.">
+         </div>
+        </td>
+       </tr>
+
+      <tr>
+       <td>
+        <center><button type="submit" style="width:40%" class="btn btn-primary">Submit Info</button></center>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+      </div>
+    </form>
+     
+    </div>
+    
+    <div class="col-sm-3 col-md-3 col-lg-3">
+    </div>
+    
+ </div>
+</div>
+ </body>
+ </html>
