@@ -15,7 +15,16 @@ router.get('/',(req,res) => {
     res.redirect('/additional_info');
    }
    else{
-    res.render('home/index',result);
+     var sql_additional = "select * from additional_info where user_id = '"+req.session.u_id+"'";
+    db.getResults(sql_additional,(add_info) => {
+      var data={
+        session_sucess: req.session.u_id,
+        user_info: result,
+        add_info: add_info
+      };
+     res.render('home/index',data);
+    });
+
    }
   }
  });
