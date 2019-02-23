@@ -76,7 +76,8 @@
 									<h5><%=add_info[0].user_hospital%></h5>
 								</td>
 							</tr>
-			<% if(user_info[0].user_type == "Doctor"){%>		
+			
+							<% if(user_info[0].user_type == "Doctor"){%>		//as only doctor have the degree option
 							<tr>
 								<td class="labelFont h5">Your Degree: </td>
 								<td>
@@ -84,6 +85,7 @@
 								</td>
 							</tr>
 							<%}%>
+							
 							<tr>
 									<td class="labelFont h5">Your Email: </td>
 									<td>
