@@ -50,7 +50,7 @@ form{
        <td>
          <div class="form-group">
            <label for="">Degree:</label>
-           <select name="doctor_degree" class="form-control">
+           <select <% if(u_type == "Pharmacy"){%> disabled <%}%>  name="doctor_degree" class="form-control">
              <option value="MBBS">MBBS</option>
              <option value="MBChB">BMBS</option>
              <option value="MBChB">MBChB</option>
