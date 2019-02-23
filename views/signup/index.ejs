@@ -10,15 +10,25 @@
  <script src="/jquery/jquery.min.js"></script>
  <script src="/bootstrap/js/bootstrap.min.js"></script>
 
+ <link rel="stylesheet" type="text/css" href="jqueryUI/jquery-ui.min.css" media="all">
+ <link rel="stylesheet" type="text/css" href="jqueryUI/jquery-ui.structure.min.css" media="all">
+ <link rel="stylesheet" type="text/css" href="jqueryUI/jquery-ui.theme.min.css" media="all">
+<script type="text/javascript" src="jqueryUI/jquery-ui.min.js"></script>
  <script>
   $(document).ready(function(){
    
     //for datePicker
-   $('#datePicker').datepicker();
+    $( "#datePicker" ).datepicker({
+            dateFormat: 'dd/mm/yy',
+        });
 
    //for tooltip
-  $('[data-toggle="tooltip"]').tooltip(); 
-
+  $('[data-toggle="tooltip"]').tooltip({
+      position: {
+        my: "right bottom",
+        at: "right top",
+      }
+    });
 
 
   });
