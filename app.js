@@ -8,7 +8,6 @@ var login            = require.main.require('./controllers/login');
 var home             = require.main.require('./controllers/home'); 
 var additionalInfo   = require.main.require('./controllers/additional_info'); 
 var logout           = require.main.require('./controllers/logout'); 
-var editProfile      = require.main.require('./controllers/edit_profile'); 
 
 var app     = express();
 
@@ -29,8 +28,7 @@ app.use(expressSession({secret:'super secret',saveUninitialized:true,resave:fals
 app.use('/contact_us', contactUs);
 app.use('/signup',signup);                                                                     
 app.use('/login',login);
-app.use('/home',home);                                                                     
-app.use('/edit_profile',editProfile);                                                                     
+app.use('/home',home);                                                                                                                                         
 app.use('/logout',logout);                                                                     
 app.use('/additional_info',additionalInfo);                                                                                                                                                                                                                                  
 //ROUTES

@@ -6,7 +6,6 @@ var router  = express.Router();
 router.get('/',(req,res)=>{
 res.render('signup/index',{success:false,error: req.session.error});
 req.session.error = null;
-
 });
 
 

@@ -4,7 +4,7 @@ var router  = express.Router();
 
 router.get('/',(req, res) => {
  if(req.session.u_id != null)
- res.render('signup/doctor_additional_info',{u_type:req.session.u_type});
+ res.render('signup/additional_info',{u_type:req.session.u_type});
  else
  res.redirect('/login');
 });

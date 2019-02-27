@@ -63,7 +63,7 @@ a{
   <div class="col-sm-2">
   </div>
   <div class="col-sm-8">
-   <form action="/edit_profile" method="POST">
+   <form method="POST">
     <table class="table table-bordered table-hover">
      <tr style="text-align: center">
       <td colspan="6" class="active">
@@ -151,7 +151,7 @@ a{
         <input type="text" class="form-control input-md" name="hospital_name" value="<%=add_info[0].user_hospital%>">
         </td>
       </tr>
-      
+      <% if(user_info[0].user_type != "Pharmacy"){ %>
       <tr>
           <td class="labelFont">Your Degree</td>
           <td>
@@ -163,7 +163,7 @@ a{
            </select>
           </td>
          </tr>
-         
+        <%}%>
          <tr>
             <td class="labelFont">Your License-No</td>
             <td>
