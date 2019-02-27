@@ -1,5 +1,5 @@
 var express = require('express');
-var db      = require.main.require('./model/db');
+var userModel      = require.main.require('./model/user-model');
 var router  = express.Router();
 
 router.get('/',(req, res) => {
@@ -11,16 +11,22 @@ router.get('/',(req, res) => {
 
 router.post('/',(req, res) => {
 
- var sql = "insert into additional_info values('',"+req.session.u_id+",'"+req.body.doctor_hospital_name+"','"+req.body.doctor_degree+"','"+req.body.doctor_lic_no+"')";
-
- db.getResults(sql, function(result){
-  if(result.affectedRows > 0){
+ var addit_info = {
+  u_id:                 req.session.u_id,
+  doctor_hospital_name: req.body.doctor_hospital_name,
+  doctor_degree:        req.body.doctor_degree,
+  doctor_lic_no:        req.body.doctor_lic_no
+ };
+ userModel.insertIntoAdditionalInfoTable(addit_info, function(result){
+  if(result){
   console.log("info addeded");
-
-  var sql_update = "update users_info SET user_account_status = 1 where user_id ='"+req.session.u_id+"'";
-  db.getResults(sql_update,function(status_update){
-   if(status_update.affectedRows > 0){
-    res.redirect('/');
+  var status={
+   value: 1,
+   user_id: req.session.u_id
+  }; 
+  userModel.updateAccountStatus(status,function(update_status){
+   if(update_status){
+    res.redirect('/login');
    };
   });
   }

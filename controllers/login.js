@@ -1,6 +1,6 @@
-var express = require('express');
-var db      = require.main.require('./model/db');
-var router  = express.Router();
+var express   = require('express');
+var userModel = require.main.require('./model/user-model');
+var router    = express.Router();
 
 //ROUTES
 router.get('/',(req,res) => {
@@ -9,12 +9,15 @@ req.session.error = null;
 });
 
 router.post('/',(req,res) => {
-var sql = "select * from users_info where user_email='"+req.body.u_email+"' and user_password = '"+req.body.u_pass+"'";
-db.getResults(sql,function(results){
+ var user={
+  u_email: req.body.u_email,
+  u_pass: req.body.u_pass
+ };
 
- if(results.length > 0){
-  req.session.u_id = results[0].user_id;
-  req.session.u_type = results[0].user_type;
+userModel.validate(user,function(result){
+ if(result.user_id != null){
+  req.session.u_id = result.user_id;
+  req.session.u_type = result.user_type;
   res.redirect('/home');
  }
 

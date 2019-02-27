@@ -1,6 +1,6 @@
-var express = require('express');
-var db      = require.main.require('./model/db');
-var router  = express.Router();
+var express   = require('express');
+var userModel = require.main.require('./model/user-model');
+var router    = express.Router();
 
 //ROUTES
 router.get('/',(req,res)=>{
@@ -11,11 +11,19 @@ req.session.error = null;
 
 router.post('/',function(req, res){
 
- var name = req.body.f_name+" "+req.body.l_name;
- var sql = "insert into users_info values('','"+name+"','"+req.body.u_email+"','"+req.body.user_type+"','"+req.body.relationship_status+"','"+req.body.u_pass+"','"+req.body.u_location+"','"+req.body.u_gender+"','"+req.body.u_birthday+"',0)";
+ var user={
+  name: req.body.f_name+" "+req.body.l_name,
+  u_email: req.body.u_email,
+  user_type: req.body.user_type,
+  relationship_status: req.body.relationship_status,
+  u_pass: req.body.u_pass,
+  u_location: req.body.u_location,
+  u_gender: req.body.u_gender,
+  u_birthday: req.body.u_birthday
+ };
 
- db.getResults(sql,function(results){
-  if(results.affectedRows>0){ 
+ userModel.insert(user,function(results){
+  if(results){ 
    req.session.error = "Successfully sign-up";
    res.redirect('/signup');
   }else{

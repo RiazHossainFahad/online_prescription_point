@@ -9,7 +9,7 @@ var home             = require.main.require('./controllers/home');
 var additionalInfo   = require.main.require('./controllers/additional_info'); 
 var logout           = require.main.require('./controllers/logout'); 
 
-var app     = express();
+var app = express();
 
 //CONFIGERATION
 app.set('view engine','ejs');
@@ -28,9 +28,10 @@ app.use(expressSession({secret:'super secret',saveUninitialized:true,resave:fals
 app.use('/contact_us', contactUs);
 app.use('/signup',signup);                                                                     
 app.use('/login',login);
-app.use('/home',home);                                                                                                                                         
-app.use('/logout',logout);                                                                     
-app.use('/additional_info',additionalInfo);                                                                                                                                                                                                                                  
+app.use('/home',home);
+app.use('/additional_info',additionalInfo);
+app.use('/logout',logout); 
+                                                                    
 //ROUTES
 app.get('/',function(req,res){
  res.render('index');

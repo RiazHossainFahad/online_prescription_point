@@ -36,7 +36,7 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
 
-	        <li><a href='/home'><%=user_info[0].user_name %></a></li>
+	        <li><a href='/home'><%=user_info.user_name %></a></li>
 			      <li><a href="#">Prescription</a></li>
          <li>
 									<a href='#'>Notification <!--<span class='badge badge-secondary'>$posts</span>--></a>
@@ -65,7 +65,7 @@
 
 					<tr style="text-align: center">
 							<td colspan="6" class="active">
-									<h3>Welcome <%=user_info[0].user_name%>
+									<h3>Welcome <%=user_info.user_name%>
 							</td>
 						</tr>
 
@@ -73,15 +73,15 @@
 						<tr>
 								<td class="labelFont h5">Your hospital name: </td>
 								<td>
-									<h5><%=add_info[0].user_hospital%></h5>
+									<h5><%=add_info.user_hospital%></h5>
 								</td>
 							</tr>
 			
-							<% if(user_info[0].user_type == "Doctor"){%>		<!-- as only doctor have the degree option -->
+							<% if(user_info.user_type == "Doctor"){%>		<!-- as only doctor have the degree option -->
 							<tr>
 								<td class="labelFont h5">Your Degree: </td>
 								<td>
-									<h5><%=add_info[0].user_degree%></h5>
+									<h5><%=add_info.user_degree%></h5>
 								</td>
 							</tr>
 							<%}%>
@@ -89,28 +89,28 @@
 							<tr>
 									<td class="labelFont h5">Your Email: </td>
 									<td>
-										<h5><%=user_info[0].user_email%></h5>
+										<h5><%=user_info.user_email%></h5>
 									</td>
 								</tr>
 
 								<tr>
 										<td class="labelFont h5">You are a: </td>
 										<td>
-											<h5><%=user_info[0].user_type%></h5>
+											<h5><%=user_info.user_type%></h5>
 										</td>
 									</tr>
 
 									<tr>
 											<td class="labelFont h5">Your Relationship status: </td>
 											<td>
-												<h5><%=user_info[0].user_relationship_status%></h5>
+												<h5><%=user_info.user_relationship_status%></h5>
 											</td>
 										</tr>
 
 										<tr>
 												<td class="labelFont h5">Your Address: </td>
 												<td>
-													<h5><%=user_info[0].user_location%></h5>
+													<h5><%=user_info.user_location%></h5>
 												</td>
 											</tr>
 										
@@ -118,7 +118,7 @@
 										<tr>
 												<td class="labelFont h5">Your gender: </td>
 												<td>
-													<h5><%=user_info[0].user_gender%></h5>
+													<h5><%=user_info.user_gender%></h5>
 												</td>
 											</tr>
 
@@ -126,13 +126,13 @@
 										<tr>
 												<td class="labelFont h5">Your Date of birth: </td>
 												<td>
-													<h5><%=user_info[0].user_dob%></h5>
+													<h5><%=user_info.user_dob%></h5>
 												</td>
 											</tr>
 										<tr>
 												<td class="labelFont h5">Your License no: </td>
 												<td>
-													<h5><%=add_info[0].user_license_no%></h5>
+													<h5><%=add_info.user_license_no%></h5>
 												</td>
 											</tr>
 
