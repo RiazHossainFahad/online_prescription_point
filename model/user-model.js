@@ -45,7 +45,7 @@ module.exports = {
 	},
 
 	insert: function(user, callback){	
- var sql = "insert into users_info values(null,?,?,?,?,?,?,?,?,0)";
+ var sql = "INSERT into users_info values(null,?,?,?,?,?,?,?,?,0)";
 		db.execute(sql,
 			[user.name,
 				user.u_email,
@@ -58,8 +58,9 @@ module.exports = {
 			callback(success);
 		});
 	},
+	
 	insertIntoAdditionalInfoTable: function(user, callback){
-		var sql = "insert into additional_info values(null,?,?,?,?)";
+		var sql = "INSERT into additional_info values(null,?,?,?,?)";
 		db.execute(sql,
 			[user.u_id,
 				user.doctor_hospital_name,
@@ -69,6 +70,24 @@ module.exports = {
 			callback(success);
 		});
 	},
+
+	insertIntoPrescriptionTable: function(user, callback){
+		var sql = "INSERT into prescription_info values(null,?,?,?,?,?,?,?,?,?)";
+		db.execute(sql,
+			[user.d_id,
+				user.p_name,
+				user.p_email,
+				user.p_age,
+				user.p_phone,
+				user.p_gender,
+				user.p_plm,
+				user.p_medicine,
+				user.v_date
+			],function(success){
+			callback(success);
+		});
+	},
+
 	update: function(user, callback){
 		var sql = "UPDATE users_info SET user_name=?,user_email=?,user_relationship_status=?,user_password=?,user_location=?,user_gender=?,user_dob=? where user_id=?";
 		db.execute(sql, 
@@ -107,7 +126,7 @@ module.exports = {
 		});
 	},
 	updateAccountStatus: function(user, callback){
-		var sql_update = "update users_info SET user_account_status =? where user_id =?";
+		var sql_update = "UPDATE users_info SET user_account_status =? where user_id =?";
 		db.execute(sql_update,
 			[
 				user.value,

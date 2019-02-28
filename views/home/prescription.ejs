@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Prescription</title>
+	
+	<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+ <script src="/jquery/jquery.min.js"></script>
+ <script src="/bootstrap/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="../jqueryUI/jquery-ui.min.css" media="all">
+ <link rel="stylesheet" type="text/css" href="../jqueryUI/jquery-ui.structure.min.css" media="all">
+ <link rel="stylesheet" type="text/css" href="../jqueryUI/jquery-ui.theme.min.css" media="all">
+<script type="text/javascript" src="../jqueryUI/jquery-ui.min.js"></script>
+ <script>
+  $(document).ready(function(){
+   
+    //for datePicker
+    $( "#datePicker" ).datepicker({dateFormat: 'dd/mm/yy'}).datepicker('setDate', 'today');
+
+});
+  </script>
+
+	<style>
+	button{
+		padding-top: 2%;
+		width: 30%;
+	}
+	h4,h5,h6{
+		text-align: center;
+	}
+	a{
+		padding-left: 3%;
+		color: darkred;
+	}
+	</style>
+
+</head>
+<body>
+	<div class="container">
+
+				<h4><%= add_info.user_hospital%></h4>
+  		<h5>Dr. <%= user.user_name%></h5>
+  		<h5>Email: <%= user.user_email%></h5>
+  		<h6>Degree: <%= add_info.user_degree%></h6>
+		<hr>
+		<form method="POST">
+		  	<div class="row">
+						<div class=" col-xs-5 col-sm-5 col-md-5 col-lg-5">
+									<div class="form-group">
+											<input type="text" name="visit_date" id="datePicker" class="form-control" placeholder="visit date" required>
+										</div>
+
+								<div class="form-group">
+											<input type="text" name="patient_name" class="form-control" placeholder="Patient's Name" required>
+									</div>
+
+									<div class="form-group">
+												<input type="number" class="form-control" name="patient_age" placeholder="Age" required>
+									</div>
+							<hr>
+
+							<div class="form-group">
+									<label>Problem Details</label>
+									<textarea class="form-control" name="patient_problem" required rows="2"></textarea>
+							</div>
+						</div>
+						
+
+							<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+							</div>
+
+						
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+								<div class="form-group">
+										<input type="email" name="patient_email" class="form-control" placeholder="Patient's email" required>
+							</div>
+								<div class="form-group">
+										<input type="phone" name="patient_phone" class="form-control" placeholder="Patient's phone" required>
+							</div>
+							
+								<select class="form-control" name="patient_gender">
+								<option value="Male">Male</option>
+								<option value="Female">Female</option>
+								<option value="Other">Other</option>
+								</select>
+								<hr>
+
+								<div class="form-group">
+										<label>Sugessted Medicines</label>
+										<textarea class="form-control" name="patient_medicine" required rows="4"></textarea>
+								</div>
+						</div>
+							
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<hr>
+								<center><button type="submit" class="btn btn-primary">Save Information</button>
+								<a href="/home">Back to home</a>
+								</center>
+							</div>
+		  	</div>
+		</form>
+	</div>
+</body>
+</html>

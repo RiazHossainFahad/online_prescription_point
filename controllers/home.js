@@ -3,9 +3,15 @@ var userModel = require.main.require('./model/user-model');
 var router    = express.Router();
 
 //ROUTES
-router.get('/',(req,res) => {
+router.get('*', function(req, res, next){
+	if(req.session.u_id != null){
+		next();
+	}else{
+		res.redirect('/login');
+	}
+});
 
- if(req.session.u_id != null){
+router.get('/',(req,res) => {
  userModel.get(req.session.u_id,function(result){
   if(result.user_id != null ){
    if(result.user_account_status == 0){
@@ -13,7 +19,7 @@ router.get('/',(req,res) => {
    }
    else{
    userModel.get_additional(req.session.u_id,(add_info) => {
-      var data={
+      var data = {
         session_sucess: req.session.u_id,
         user_info:      result,
         add_info:       add_info
@@ -24,10 +30,6 @@ router.get('/',(req,res) => {
    }
   }
  });
- }
- else{
-  res.redirect('/login');
-  }
 });
 
 //routes for /edit_profile 
@@ -93,4 +95,40 @@ router.get('/edit_profile', (req, res) => {
   
   });
 
+
+  router.get('/prescription',(req, res) => {
+    userModel.get(req.session.u_id,(result) => {
+      if(result.user_id != null){
+        userModel.get_additional(req.session.u_id,(result_add) => {
+          if(result_add.user_id != null){
+          var data = {
+            user:      result,
+            add_info : result_add
+          };
+          res.render('home/prescription', data);
+        }
+        });
+      }
+    });
+  });
+
+  router.post('/prescription',(req, res) => {
+    var patient_info = {
+      d_id : req.session.u_id,
+      p_name: req.body.patient_name,
+      p_age: req.body.patient_age,
+      p_plm: req.body.patient_problem,
+      p_email: req.body.patient_email,
+      p_phone: req.body.patient_phone,
+      p_gender: req.body.patient_gender,
+      p_medicine: req.body.patient_medicine,
+      v_date: req.body.visit_date
+    };
+    userModel.insertIntoPrescriptionTable(patient_info,(status)=>{
+      if(status){
+        res.redirect('/home');
+      }
+      else res.redirect('/home/prescription')
+    });
+  });
 module.exports = router;
