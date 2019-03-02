@@ -72,7 +72,7 @@ module.exports = {
 	},
 
 	insertIntoPrescriptionTable: function(user, callback){
-		var sql = "INSERT into prescription_info values(null,?,?,?,?,?,?,?,?,?)";
+		var sql = "INSERT into prescription_info values(null,?,?,?,?,?,?,?,?,?,?)";
 		db.execute(sql,
 			[user.d_id,
 				user.p_name,
@@ -80,6 +80,7 @@ module.exports = {
 				user.p_age,
 				user.p_phone,
 				user.p_gender,
+				user.p_location,
 				user.p_plm,
 				user.p_medicine,
 				user.v_date

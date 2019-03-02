@@ -121,6 +121,7 @@ router.get('/edit_profile', (req, res) => {
       p_email: req.body.patient_email,
       p_phone: req.body.patient_phone,
       p_gender: req.body.patient_gender,
+      p_location: req.body.patient_location,
       p_medicine: req.body.patient_medicine,
       v_date: req.body.visit_date
     };
