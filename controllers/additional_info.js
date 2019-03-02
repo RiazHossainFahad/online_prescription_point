@@ -11,15 +11,24 @@ router.get('/',(req, res) => {
 
 router.post('/',(req, res) => {
 
- var addit_info = {
-  u_id:                 req.session.u_id,
-  doctor_hospital_name: req.body.doctor_hospital_name,
-  doctor_degree:        req.body.doctor_degree,
-  doctor_lic_no:        req.body.doctor_lic_no
- };
+ if(req.session.u_type == "Pharmacy"){
+  var addit_info = {
+   u_id:                 req.session.u_id,
+   doctor_hospital_name: req.body.doctor_hospital_name,
+   doctor_degree:        'none',
+   doctor_lic_no:        req.body.doctor_lic_no
+  };
+ }
+ else{
+  var addit_info = {
+   u_id:                 req.session.u_id,
+   doctor_hospital_name: req.body.doctor_hospital_name,
+   doctor_degree:        req.body.doctor_degree,
+   doctor_lic_no:        req.body.doctor_lic_no
+  };
+ }
  userModel.insertIntoAdditionalInfoTable(addit_info, function(result){
   if(result){
-  console.log("info addeded");
   var status={
    value: 1,
    user_id: req.session.u_id
