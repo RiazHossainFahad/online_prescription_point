@@ -6,6 +6,7 @@ var contactUs        = require.main.require('./controllers/contact_us');
 var signup           = require.main.require('./controllers/signup'); 
 var login            = require.main.require('./controllers/login'); 
 var home             = require.main.require('./controllers/home'); 
+var adminHome        = require.main.require('./controllers/admin_home'); 
 var additionalInfo   = require.main.require('./controllers/additional_info'); 
 var logout           = require.main.require('./controllers/logout'); 
 
@@ -29,6 +30,7 @@ app.use('/contact_us', contactUs);
 app.use('/signup',signup);                                                                     
 app.use('/login',login);
 app.use('/home',home);
+app.use('/home-admin',adminHome);
 app.use('/additional_info',additionalInfo);
 app.use('/logout',logout); 
                                                                     

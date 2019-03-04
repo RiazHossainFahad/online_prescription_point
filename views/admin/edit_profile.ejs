@@ -43,6 +43,7 @@
 <style>
 .labelFont{
  font-weight: bold;
+ text-align: center;
 }
 
 form{
@@ -145,35 +146,9 @@ a{
      </tr>
 
      <tr>
-        <td class="labelFont">Hospaital/Store-name</td>
-        <td>
-        <input type="text" class="form-control input-md" name="hospital_name" value="<%=add_info.user_hospital%>">
-        </td>
-      </tr>
-      <% if(user_info.user_type != "Pharmacy"){ %>
-      <tr>
-          <td class="labelFont">Your Degree</td>
-          <td>
-           <select class="form-control" name="u_degree">
-              <option value="<%=add_info.user_degree%>"><%=add_info.user_degree%></option>
-              <option value="MBBS">MBBS</option>
-              <option value="MBChB">BMBS</option>
-              <option value="MBChB">MBChB</option>
-           </select>
-          </td>
-         </tr>
-        <%}%>
-         <tr>
-            <td class="labelFont">Your License-No</td>
-            <td>
-            <input type="text" class="form-control input-md" name="user_lic_no" value="<%=add_info.user_license_no%>">
-            </td>
-          </tr>
-
-     <tr>
       <td colspan="6">
      <center> <input type="submit" class="btn btn-success" name="signup" style="width: 40%;" value="Update">
-    <a href="/home">Back</a>
+    <a href="/home-admin">Back</a>
     </center>
       </td>		
      </tr>

@@ -18,6 +18,10 @@ userModel.validate(user,function(result){
  if(result.user_id != null){
   req.session.u_id = result.user_id;
   req.session.u_type = result.user_type;
+
+  if(req.session.u_type == "Admin"){
+   res.redirect('/home-admin'); 
+  }else
   res.redirect('/home');
  }
 

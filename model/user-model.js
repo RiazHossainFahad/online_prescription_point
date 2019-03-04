@@ -27,8 +27,8 @@ module.exports = {
 },
 
 	getAll: function(callback){
-		var sql = "select * from user";
-		db.getResults(sql, function(results){
+		var sql = "select * from users_info";
+		db.getResults(sql, [], function(results){
 			callback(results);
 		});
 	},
