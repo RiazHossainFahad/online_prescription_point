@@ -132,4 +132,59 @@ router.get("/delete/:id", function(req, res){
 });
 
 
+//patient list
+router.get('/patient_list',(req, res) => {
+
+  adminModel.getAllPatient(function(results){
+  var data = {
+   admin_id: req.session.u_id,
+   uList: results
+  };
+  res.render('admin/patient_list', data);
+  });
+});
+
+router.get('/edit-patient/:id', function(req, res){
+
+  adminModel.get(req.params.id, (result_info) => {
+   if(result_info != ""){
+    var data = {
+      user_info:  result_info
+     }
+     res.render('admin/edit_patient_profile',data); //render edit_profile view with the data
+   }else{
+    res.redirect('/home-admin/patient_list');
+   }
+ });
+ });
+ 
+ router.post('/edit-patient/:id',(req, res) => {
+    
+  var update_user = {
+    name:       req.body.name,
+    u_email:    req.body.u_email,
+    u_phone:    req.body.u_phone,
+    u_location: req.body.u_location,
+    u_gender:   req.body.u_gender,
+    u_age:      req.body.u_age,
+    user_id:    req.params.id
+  };
+ 
+   //update user_info table information
+  adminModel.update(update_user, (user_update_status)=>{
+   if(user_update_status){
+    res.redirect('/home-admin/patient_list');
+   }
+  });
+ });
+
+ //delete patient
+ router.get("/delete-patient/:id", function(req, res){
+
+	adminModel.deletePatient(req.params.id, function(status){
+    if(status)
+			res.redirect('/home-admin/patient_list');
+	});
+});
+
 module.exports = router;

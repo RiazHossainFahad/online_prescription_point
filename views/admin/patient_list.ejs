@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-10" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+				<title>Patients List</title>
+				
+				<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+				<script src="/jquery/jquery.min.js"></script>
+				<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+    <style>
+      .navbar{
+        margin : 10px;
+        padding: 10px;
+       }
+       th{
+         text-align: center;
+       }
+   </style>
+</head>
+
+<body>
+ 
+ <div class="container">
+  <div class="row">
+   
+   <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+    
+   </div>
+   
+   <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+    
+    <table class="table table-bordered table-hover">
+       <tr style="text-align: center">
+         <td colspan="10" class="active">
+           <h2>Patients-List</h2>
+         </td>
+        </tr>
+        <% if(uList.length != null){%> 
+        <tr>
+         <th>Id</th>
+         <th>Doctor_Id</th>
+         <th>Name</th>
+         <th>Email</th>
+         <th>Phone</th>
+         <th>Location</th>
+         <th>Action</th>
+       </tr>
+       <% for(var i=0; i < uList.length; i++){ %>
+        <tr>
+         <td><%= uList[i].p_id %></td>
+         <td><%= uList[i].doctor_id %></td>
+         <td><%= uList[i].p_name %></td>
+         <td><%= uList[i].p_email %></td>
+         <td><%= uList[i].p_phone %></td>
+         <td><%= uList[i].p_location %></td>
+         <td>
+          <a href="/home-admin/edit-patient/<%=uList[i].p_id%>"> EDIT</a> |
+          <a data-toggle="modal"  href="#modal-delete-<%=uList[i].p_id%>"> DELETE</a>
+         </td>
+        </tr>
+
+         <!-- Modal For alert while deleting. -->
+         <div class="modal fade" id="modal-delete-<%=uList[i].p_id%>">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                         <center><h4 class="modal-title">Warning</h4></center>
+                    </div>
+                    <div class="modal-body">
+                      
+                     <center>
+                        <span class="h5">Once clicking on delete, you can't undo it.</span><br>
+
+                        <span class="h5" style="color:darkred">Do you want to delete?</span><br>
+                      <a class="btn btn-danger" style="width:20%" href="/home-admin/delete-patient/<%=uList[i].p_id%>">Delete</a>
+                      <a class="btn btn-info" style="width:20%" href="/home-admin/patient_list">Back</a>
+                     </center>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                </div>
+          </div>
+        <% } } else{%>
+            <tr>
+              <td>
+                No p found.
+              </td>
+            </tr>
+            <% } %>
+       <tr>
+         <td colspan="10"><a class="btn btn-info" style="width:20%;float: right;" href='/home-admin'>Back</a></td>
+       </tr>
+    </table>
+
+
+   </div>  
+   
+   <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+    
+   </div>
+   
+  </div>
+ </div>
+ 
+</body>
+</html>
