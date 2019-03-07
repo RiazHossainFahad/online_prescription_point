@@ -4,6 +4,7 @@ var router  = express.Router();
 router.get('/',(req, res) =>{
  req.session.u_id   = null;
  req.session.u_type = null;
+ req.session.u_loc  = null;
  req.session.error  = null;
  res.redirect('/login');
 });

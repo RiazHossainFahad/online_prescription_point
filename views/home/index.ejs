@@ -15,7 +15,23 @@
         padding: 10px;
        }
 
-   </style>
+			</style>
+			
+			<script>
+			$('document').ready(function(){
+				$('#notification').click(function(){
+					$.ajax({
+									type: 'GET',
+         url: 'http://localhost:3000/home/pharmacy-notification',						
+         success: function(data) {
+										console.log('success');
+         	console.log(data[0].p_id);
+        }
+    });
+				});
+			});
+			</script>
+
 </head>
 
 <body>
@@ -35,10 +51,26 @@
 	      <ul class="nav navbar-nav">
 
 	        <li><a href='/home'><%=user_info.user_name %></a></li>
-			      <li><a href="/home/prescription">Prescription</a></li>
+								<% if(user_info.user_type =="Doctor"){%>
+									<li><a href="/home/prescription">Prescription</a></li>
+								
+									<li>
+										<a href='#'>Notification	<%if(no_of_noti){%> <sup><span class='badge badge-secondary'><%= no_of_noti%></span></sup><%}%></a>
+									</li>
+									
+									
+									<%}if(user_info.user_type =="Pharmacy"){%>
          <li>
-									<a href='#'>Notification <!--<span class='badge badge-secondary'>$posts</span>--></a>
+									<a class="dropdown-toggle" data-toggle="dropdown" href="#">Notification	<%if(notification.length){%> <sup><span class='badge badge-secondary'><%= notification.length%></span></sup><%}%></a>
+									<ul class="dropdown-menu">
+											<% for(var i=0; i < notification.length; i++){ %>
+										<li><a style="color:blue" href="/home/pharmacy-notification/<%=notification[i].p_id%>">Prescription of <strong><%=notification[i].p_name%></strong> from <strong><%=notification[i].p_location%></strong></a></li>
+										<%}%>
+										</ul>
 								</li>
+								<%}%>
+								
+								
 								<li>
 									<a href='/home/edit_profile'>Edit Account</a>
 								</li>

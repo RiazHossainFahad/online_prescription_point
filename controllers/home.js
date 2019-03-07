@@ -1,5 +1,6 @@
 var express   = require('express');
 var userModel = require.main.require('./model/user-model');
+var pharmacyModel = require.main.require('./model/pharmacy-model');
 var router    = express.Router();
 
 //ROUTES
@@ -19,12 +20,27 @@ router.get('/',(req,res) => {
    }
    else{
    userModel.get_additional(req.session.u_id,(add_info) => {
+     if(result.user_type == "Pharmacy"){
+      pharmacyModel.getNotification(result.user_location, (result_noti) => {
+        var data = {
+          notification    : result_noti,
+          session_sucess: req.session.u_id,
+          user_info:      result,
+          add_info:       add_info
+        };
+       res.render('home/index',data);
+
+      });
+     }else{
       var data = {
+        no_of_noti    : 0,
         session_sucess: req.session.u_id,
         user_info:      result,
         add_info:       add_info
       };
      res.render('home/index',data);
+     }
+
     });
 
    }
@@ -123,6 +139,8 @@ router.get('/edit_profile', (req, res) => {
       p_gender: req.body.patient_gender,
       p_location: req.body.patient_location,
       p_medicine: req.body.patient_medicine,
+      r_msg: null,
+      r_sts: 1,
       v_date: req.body.visit_date
     };
     userModel.insertIntoPrescriptionTable(patient_info,(status)=>{
@@ -132,4 +150,34 @@ router.get('/edit_profile', (req, res) => {
       else res.redirect('/home/prescription')
     });
   });
+
+//show notifaction for pharmacy
+router.get('/pharmacy-notification/:id', (req, res) =>{
+  pharmacyModel.get( req.params.id,(result_pres)=>{
+    userModel.get(result_pres.doctor_id,(result) => {
+    userModel.get_additional(result_pres.doctor_id,(result_add) => {
+      var data = {
+        user:     result,
+        add_info: result_add,
+        p_info:   result_pres
+      };
+      res.render('home/pharmacy/prescription',data);
+    });
+    });
+  });
+});
+
+
+router.post('/pharmacy-notification/:id', (req, res) => {
+  var data = {
+    r_msg: req.body.r_message,
+    r_sts: 0,
+    patient_id:  req.params.id
+  };
+  pharmacyModel.updatePrescriptionRequest(data, (status) => {
+    if(status){
+      res.redirect('/home');
+    }
+  });
+});
 module.exports = router;

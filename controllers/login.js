@@ -16,8 +16,9 @@ router.post('/',(req,res) => {
 
 userModel.validate(user,function(result){
  if(result.user_id != null){
-  req.session.u_id = result.user_id;
+  req.session.u_id   = result.user_id;
   req.session.u_type = result.user_type;
+  req.session.u_loc  = result.user_location;
 
   if(req.session.u_type == "Admin"){
    res.redirect('/home-admin'); 
