@@ -55,7 +55,20 @@
 									<li><a href="/home/prescription">Prescription</a></li>
 								
 									<li>
-										<a href='#'>Notification	<%if(no_of_noti){%> <sup><span class='badge badge-secondary'><%= no_of_noti%></span></sup><%}%></a>
+										<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+											Notification	<%if(notification.length){%> 
+												<sup><span class='badge badge-secondary'><%= notification.length%></span></sup>
+												<%}%>
+										</a>
+										<ul class="dropdown-menu">
+												<% for(var i=0; i < notification.length; i++){ %>
+											<li>
+												<a style="color:blue" href="/home/doctor-notification/<%=notification[i].p_id%>">
+													Request for change medicine of <strong><%=notification[i].p_name%></strong>
+												</a>
+											</li>
+											<%}%>
+											</ul>
 									</li>
 									
 									

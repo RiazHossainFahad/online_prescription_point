@@ -32,17 +32,17 @@ router.get('/',(req,res) => {
 
       });
      }else{
+      pharmacyModel.getNotificationDoctor(req.session.u_id, (result_noti) => {
       var data = {
-        no_of_noti    : 0,
+        notification    : result_noti,
         session_sucess: req.session.u_id,
         user_info:      result,
         add_info:       add_info
       };
      res.render('home/index',data);
-     }
-
     });
-
+    }
+    });
    }
   }
  });
@@ -161,12 +161,11 @@ router.get('/pharmacy-notification/:id', (req, res) =>{
         add_info: result_add,
         p_info:   result_pres
       };
-      res.render('home/pharmacy/prescription',data);
+      res.render('home/pharmacy_change_request',data);
     });
     });
   });
 });
-
 
 router.post('/pharmacy-notification/:id', (req, res) => {
   var data = {
@@ -175,6 +174,35 @@ router.post('/pharmacy-notification/:id', (req, res) => {
     patient_id:  req.params.id
   };
   pharmacyModel.updatePrescriptionRequest(data, (status) => {
+    if(status){
+      res.redirect('/home');
+    }
+  });
+});
+
+//show change request to doctor
+router.get('/doctor-notification/:id', (req, res) =>{
+  pharmacyModel.get( req.params.id,(result_pres)=>{
+    userModel.get(result_pres.doctor_id,(result) => {
+    userModel.get_additional(result_pres.doctor_id,(result_add) => {
+      var data = {
+        user:     result,
+        add_info: result_add,
+        p_info:   result_pres
+      };
+      res.render('home/change_request_prescription',data);
+    });
+    });
+  });
+});
+
+router.post('/doctor-notification/:id', (req, res) => {
+  var data = {
+    p_medicine: req.body.patient_medicine,
+    r_sts: 1,
+    patient_id:  req.params.id
+  };
+  pharmacyModel.updatePrescription(data, (status) => {
     if(status){
       res.redirect('/home');
     }

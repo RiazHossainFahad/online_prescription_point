@@ -20,6 +20,28 @@ module.exports = {
 		});
  },
 
+ getNotificationDoctor: function(d_id,callback){
+		var sql = "select * from prescription_info where doctor_id=? and r_status=?";
+		db.getResults(sql, [d_id, 0], function(results){
+			callback(results);
+		});
+ },
+ updatePrescription: function(data, callback){
+  var sql = "UPDATE prescription_info SET p_medicine=?, r_message=?, r_status=? where p_id=?";
+  db.execute(sql, [
+   data.p_medicine,
+   null,
+   data.r_sts,
+   data.patient_id
+  ],(status)=>{
+   if(status){
+   callback(true);
+   }
+   else
+   callback(false);
+  });
+ },
+
  updatePrescriptionRequest: function(data, callback){
   var sql = "UPDATE prescription_info SET r_message=?, r_status=? where p_id=?";
   db.execute(sql, [
