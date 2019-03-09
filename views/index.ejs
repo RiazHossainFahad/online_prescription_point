@@ -17,7 +17,7 @@
     .btn{
         width: 20%
     }
-    p{
+    #error{
       text-align: center;
       color: red;
     }
@@ -31,7 +31,7 @@
 </head>
 <body>
   <%if(errors != null){ for(var i=0; i< errors.length; i++){%>
-    <p><%=errors[i].msg%></p>
+    <p id="error"><%=errors[i].msg%></p>
     <%}}%>
 
   <!--Navigation Bar-->

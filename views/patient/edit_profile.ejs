@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <title>Edit Account info</title>
+ 
+ <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+ <script src="/jquery/jquery.min.js"></script>
+ <script src="/bootstrap/js/bootstrap.min.js"></script>
+
+ <link rel="stylesheet" type="text/css" href="jqueryUI/jquery-ui.min.css" media="all">
+ <link rel="stylesheet" type="text/css" href="jqueryUI/jquery-ui.structure.min.css" media="all">
+ <link rel="stylesheet" type="text/css" href="jqueryUI/jquery-ui.theme.min.css" media="all">
+<script type="text/javascript" src="jqueryUI/jquery-ui.min.js"></script>
+ <script>
+  $(document).ready(function(){
+   
+    //for datePicker
+    $( "#datePicker" ).datepicker({
+            dateFormat: 'dd/mm/yy',
+        });
+
+   //for tooltip
+  $('[data-toggle="tooltip"]').tooltip({
+      position: {
+        my: "right bottom",
+        at: "right top",
+      }
+    });
+
+
+  });
+  </script>
+
+  <style>
+  .btn-danger{
+    margin-left: 2%;
+    }
+    p{
+      color: red;
+    }
+  </style>
+
+<style>
+.labelFont{
+ font-weight: bold;
+}
+
+form{
+  margin: 2%;
+}
+
+a{
+  margin-left: 2%;
+  color: firebrick;
+}
+</style>
+
+</head>
+<body>
+  <div class="container">
+ <div class="row">
+  <div class="col-sm-2">
+  </div>
+  <div class="col-sm-8">
+   <form method="POST">
+    <table class="table table-bordered table-hover">
+     <tr style="text-align: center">
+      <td colspan="6" class="active">
+        <h2>Edit Account Info</h2>
+      </td>
+     </tr>
+    
+     <tr>
+      <td class="labelFont">Name</td>
+      <td>
+       <input class="form-control" type="text" data-toggle="tooltip" data-placement="right" title="Enter Name" name="name" value="<%=user_info.p_name%>" required >
+      </td>
+     </tr>
+
+     <tr>
+      <td class="labelFont">Email</td>
+      <td>
+       <input class="form-control" type="email" name="u_email" value="<%=user_info.p_email%>" required >
+      </td>
+     </tr>
+
+     
+     <tr>
+      <td class="labelFont">Phone</td>
+      <td>
+       <input class="form-control" type="text" name="u_phone" value="<%=user_info.p_phone%>" id="mypass" required >
+      </td>
+     </tr>
+
+     <tr>
+      <td class="labelFont">Location</td>
+      <td>
+       <select class="form-control" name="u_location">
+        <option value="<%=user_info.p_location%>" ><%=user_info.p_location%></option>
+        <option value="Banani" >Banani</option>
+        <option value="Gulsan-1" >Gulsan-1</option>
+        <option value="Gulsan-2" >Gulsan-2</option>
+        <option value="Mohakhali" >Mohakhali</option>
+        <option value="Kuril" >Kuril</option>
+        <option value="Khilkhet" >Khilkhet</option>
+        <option value="Nikunjo-2" >Nikunjo-2</option>
+        <option value="Airport" >Airport</option>
+       </select>
+      </td>
+     </tr>
+
+     <tr>
+      <td class="labelFont">Gender</td>
+      <td>
+       <select class="form-control" name="u_gender">
+        <option value="<%=user_info.p_gender%>"><%=user_info.p_gender%></option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+       </select>
+      </td>
+     </tr>
+
+     <tr>
+      <td class="labelFont">Age</td>
+      <td>
+       <input class="form-control input-md" min="1" id="datePicker" value="<%=user_info.p_age%>" type="number" name="u_age" required>
+      </td>
+     </tr>
+
+     <tr>
+      <td colspan="6">
+     <center> <input type="submit" class="btn btn-success" name="Update" style="width: 40%;" value="Update">
+    <a href="/home-patient">Back</a>
+    </center>
+      </td>		
+     </tr>
+    </table>
+   </form>
+  </div>
+  <div class="col-sm-2">
+      <%if(errors != null){ for(var i=0; i< errors.length; i++){%>
+        <p><%=errors[i].msg%></p>
+        <%}}%>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

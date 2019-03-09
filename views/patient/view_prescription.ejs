@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <title>Prescription</title>
+ 
+ <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+ <script src="/jquery/jquery.min.js"></script>
+ <script src="/bootstrap/js/bootstrap.min.js"></script>
+
+ <style>
+ a{
+  float: right;
+  width: 30%
+ }
+ </style>
+ </head>
+ <body>
+  <div class="container">
+   <div class="row">
+    
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+     
+    </div>
+    
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+     <table class="table">
+      <tr>
+       <th>
+        <h3><%= d_add.user_hospital%></h3>
+        <h5><%= d_info.user_location%></h5>
+        <h5>V.D. <%= v_pres.v_date%></h5>
+
+       </th>
+
+       <th style="text-align:right">
+         <h3><%= d_info.user_name%></h3>
+         <h5><%= d_add.user_degree%></h5>
+         <h5><%= d_info.user_email%></h5>
+        </th>
+      </tr>
+
+        <tr style="text-align:center">
+        <td style="width:40%">
+        <h4>Your problems</h4> 
+        </td>
+        <td style="width:60%">
+         <h4>Your medicines</h4>
+        </td>
+        </tr>
+
+        <tr>
+        <td style="width:20%">
+          <%= v_pres.p_problem%>
+         </td>
+  
+         <td>
+          <%= v_pres.p_medicine%>
+         </td>
+        </tr>
+
+        <tr>
+         <td colspan="2">
+          <hr>
+          <a href="/home-patient" class="btn btn-info">Back</a>
+         </td>
+         </tr>
+     </table>
+    </div>
+    
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+     
+    </div>
+    
+   </div>
+  </div>
+  
+ </body>
+ </html>

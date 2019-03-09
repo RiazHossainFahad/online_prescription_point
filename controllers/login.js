@@ -1,6 +1,7 @@
-var express   = require('express');
-var userModel = require.main.require('./model/user-model');
-var router    = express.Router();
+var express      = require('express');
+var userModel    = require.main.require('./model/user-model');
+var patientModel = require.main.require('./model/patient-model');
+var router       = express.Router();
 
 //ROUTES
 router.get('/',(req,res) => {
@@ -36,7 +37,16 @@ userModel.validate(user,function(result){
   res.redirect('/home');
  }
  else{
-  res.redirect('/login');
+  patientModel.validate(user,(result) =>{
+   if(result){
+    req.session.u_id   = result.p_id;
+    req.session.u_loc  = result.p_location;
+    res.redirect('/home-patient');
+   }
+   else{
+    res.redirect('/login');
+   }
+  });
  }
 });
 }else{

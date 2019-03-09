@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+				<title>Patient's Home</title>
+				
+				<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+				<script src="/jquery/jquery.min.js"></script>
+				<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+    <style>
+      .navbar{
+        margin : 10px;
+        padding: 10px;
+       }
+
+			</style>
+			
+			<script>
+			$('document').ready(function(){
+				$('#notification').click(function(){
+					$.ajax({
+									type: 'GET',
+         url: 'http://localhost:3000/home/pharmacy-notification',						
+         success: function(data) {
+										console.log('success');
+         	console.log(data[0].p_id);
+        }
+    });
+				});
+			});
+			</script>
+
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+   <div class="container-fluid">
+    <div class="navbar-header">
+     <button type="button" class="navbar-toggle collapsed" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" aria-expanded="false">
+     <span class="sr-only">Navigation</span>
+     <span class="icon-bar"></span>
+     <span class="icon-bar"></span>
+     <span class="icon-bar"></span>
+     </button>
+     <a class="navbar-brand" href="/home-patient">Online Prescription Point</a>
+    </div>
+  
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+         <ul class="nav navbar-nav">
+  
+           <li><a href='/home-patient'><%=p_info.p_name %></a></li>
+           <li>
+           <a href="/home-patient/view-prescription">View Prescription</a>
+          </li>
+          <li>
+           <a href='/home-patient/edit-account'>Edit Account</a>
+          </li>
+     </ul>
+     
+     <ul class="nav navbar-nav navbar-right">
+       <li><a href='/logout'><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+   </ul>
+    </div>
+   </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+     
+     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+      
+     </div>
+     
+     <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+      
+      <table class="table table-bordered table-hover">
+   
+        <tr style="text-align: center">
+          <td colspan="6" class="active">
+            <h3>Welcome <%=p_info.p_name%>
+          </td>
+         </tr>
+   
+       <tbody>
+          
+          <tr>
+            <td class="labelFont h5">Your Email: </td>
+            <td>
+             <h5><%=p_info.p_email%></h5>
+            </td>
+           </tr>
+   
+            <tr>
+              <td class="labelFont h5">Your Age: </td>
+              <td>
+               <h5><%=p_info.p_age%></h5>
+              </td>
+             </tr>
+
+             <tr>
+              <td class="labelFont h5">Your Phone Number: </td>
+              <td>
+               <h5><%=p_info.p_phone%></h5>
+              </td>
+             </tr>
+   
+             <tr>
+               <td class="labelFont h5">Your Address: </td>
+               <td>
+                <h5><%=p_info.p_location%></h5>
+               </td>
+              </tr>
+             
+              
+             <tr>
+               <td class="labelFont h5">Your gender: </td>
+               <td>
+                <h5><%=p_info.p_gender%></h5>
+               </td>
+              </tr>
+   
+            </tbody>
+      </table>
+      </div>
+  </body>
+  </html>
