@@ -6,9 +6,12 @@ var router       = express.Router();
 //ROUTES
 router.get('/',(req,res) => {
  var error = {
-  errors: req.session.errors
+  errors: req.session.errors,
+  success: req.session.success
  };
+ console.log(req.session.success);
  req.session.errors = null;
+ req.session.success = null;
 res.render('login/index',error);
 });
 
@@ -37,6 +40,7 @@ userModel.validate(user,function(result){
   res.redirect('/home');
  }
  else{
+  req.session.success = "Invalid User";
   patientModel.validate(user,(result) =>{
    if(result){
     req.session.u_id   = result.p_id;
@@ -50,6 +54,7 @@ userModel.validate(user,function(result){
  }
 });
 }else{
+ console.log(req.session.success);
  req.session.errors = err;
  res.redirect('/login');
 }

@@ -5,9 +5,11 @@ var router    = express.Router();
 //ROUTES
 router.get('/',(req,res)=>{
  var err = {
-  errors: req.session.errors
+  errors: req.session.errors,
+  success: req.session.success 
  };
  req.session.errors = null;
+ req.session.success = null;
 res.render('signup/index',err);
 });
 
@@ -36,8 +38,10 @@ router.post('/',function(req, res){
   req.session.errors = null;
  userModel.insert(user,function(results){
   if(results){ 
+   req.session.success = 'Successfully sign up...Good to go!!';
    res.redirect('/signup');
   }else{
+   req.session.success = 'Probelm with signup..try again'
    res.redirect('/signup');
   }
  });

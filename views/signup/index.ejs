@@ -180,8 +180,9 @@ a{
   <div class="col-sm-2">
       <%if(errors != null){ for(var i=0; i< errors.length; i++){%>
         <p><%=errors[i].msg%></p>
-        <%}}%>
-    
+        <%}}else if(success != null){%>
+          <p><%= success%></p>
+          <%}%>
   </div>
 
 </div>
