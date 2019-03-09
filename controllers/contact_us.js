@@ -8,11 +8,17 @@ res.redirect('/');
 });
 
 router.post('/',function(req,res){
+
+  req.check('contact_us_email', 'Invalid e-mail address').isEmail();
+  req.check('contact_us_comment', 'Empty query field').trim().not().isEmpty();
+  var err = req.validationErrors();
+ //console.log(err.length);
   var nonUserData = {
     contact_us_email:   req.body.contact_us_email,
     contact_us_comment: req.body.contact_us_comment
   };
-      
+   if(!err){ 
+     req.session.errors = null;  
   contactUs.insrtToContactUs(nonUserData, function(status){
     if(status){ 
 
@@ -41,6 +47,10 @@ router.post('/',function(req,res){
     res.redirect('/');
     }
   });
+}else{
+  req.session.errors = err;
+  res.redirect('/');
+}
 });
 
 module.exports = router;

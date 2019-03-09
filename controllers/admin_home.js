@@ -22,14 +22,26 @@ router.get('/',(req,res) => {
 router.get('/admin-edit_account',(req,res) => {
  userModel.get(req.session.u_id,(result_info) => {
   if(result_info.user_id != null){
-   res.render('admin/edit_profile',{user_info: result_info});
+    var data = {
+      user_info: result_info,
+      errors:    req.session.errors
+    };
+   res.render('admin/edit_profile',data);
   }
   else{res.redirect('/home-admin')}
 });
 });
 
 router.post('/admin-edit_account',(req, res) => {
-    
+
+  req.check('name', 'Empty name').notEmpty().rtrim();
+  req.check('u_email', 'Invalid e-mail').isEmail();
+  req.check('u_pass', 'Invalid password length').isLength({min: 4});
+  req.check('u_birthday', 'Invalid date of birth').notEmpty().rtrim();
+  
+  var err = req.validationErrors();
+  if(!err){
+    req.session.errors = null;
  var update_user = {
    name:                 req.body.name,
    u_email:              req.body.u_email,
@@ -50,6 +62,10 @@ router.post('/admin-edit_account',(req, res) => {
    res.redirect('/home-admin/admin-edit_account');
   }
  });
+}else{
+  req.session.errors = err;
+  res.redirect('/home-admin/admin-edit_account');
+}
 });
 
 router.get('/user_list',(req, res) => {
@@ -72,8 +88,10 @@ router.get('/edit/:id', function(req, res){
    if(result_add_info != ""){
     var data = {
      user_info:  result_info,
-     add_info:   result_add_info
+     add_info:   result_add_info,
+     errors:     req.session.errors
     }
+    req.session.errors = null;
     res.render('admin/edit_user_profile',data); //render edit_profile view with the data
   }
 
@@ -89,7 +107,16 @@ else{
 });
 
 router.post('/edit/:id',(req, res) => {
-    
+  req.check('name', 'Empty name').notEmpty().rtrim();
+  req.check('u_email', 'Invalid e-mail').isEmail();
+  req.check('u_pass', 'Invalid password length').isLength({min: 4});
+  req.check('u_birthday', 'Invalid date of birth').notEmpty().rtrim();
+  req.check('hospital_name', 'Empty hospital name').notEmpty().rtrim();
+  req.check('user_lic_no', 'Empty license number').notEmpty().rtrim();
+
+  var err = req.validationErrors();
+  if(!err){
+    req.session.errors = null;
  var update_user = {
    name:                 req.body.name,
    u_email:              req.body.u_email,
@@ -122,6 +149,11 @@ router.post('/edit/:id',(req, res) => {
   });
   }
  });
+  }
+  else{
+    req.session.errors = err;
+    res.redirect('/home-admin/edit/'+req.params.id);
+  }
 });
 
 router.get("/delete/:id", function(req, res){
@@ -149,8 +181,10 @@ router.get('/edit-patient/:id', function(req, res){
   adminModel.get(req.params.id, (result_info) => {
    if(result_info != ""){
     var data = {
-      user_info:  result_info
+      user_info:  result_info,
+      errors:     req.session.errors
      }
+     req.session.errors = null;
      res.render('admin/edit_patient_profile',data); //render edit_profile view with the data
    }else{
     res.redirect('/home-admin/patient_list');
@@ -159,7 +193,13 @@ router.get('/edit-patient/:id', function(req, res){
  });
  
  router.post('/edit-patient/:id',(req, res) => {
-    
+   req.check('name','Empty name field').notEmpty().rtrim(); 
+   req.check('u_email','Invalid e-mail address').isEmail(); 
+   req.check('u_phone','Invalid phone number').isNumeric().isLength({min:11});
+   
+   var err = req.validationErrors();
+   if(!err){
+     req.session.errors = null;
   var update_user = {
     name:       req.body.name,
     u_email:    req.body.u_email,
@@ -176,6 +216,10 @@ router.get('/edit-patient/:id', function(req, res){
     res.redirect('/home-admin/patient_list');
    }
   });
+}else{
+  req.session.errors = err;
+  res.redirect('/home-admin/edit-patient/'+req.params.id);
+}
  });
 
  //delete patient

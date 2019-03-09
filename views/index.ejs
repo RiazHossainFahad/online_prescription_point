@@ -17,13 +17,23 @@
     .btn{
         width: 20%
     }
-
+    p{
+      text-align: center;
+      color: red;
+    }
     form{
         margin: 1%;
     }
     </style>
+    <script>
+      alert(errors);
+    </script>
 </head>
 <body>
+  <%if(errors != null){ for(var i=0; i< errors.length; i++){%>
+    <p><%=errors[i].msg%></p>
+    <%}}%>
+
   <!--Navigation Bar-->
   <div class="col-lg-12">
    <nav class="navbar navbar-inverse">

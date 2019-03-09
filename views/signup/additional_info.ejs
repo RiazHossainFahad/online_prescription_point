@@ -14,7 +14,9 @@
 form{
  margin: 2%
 }
-
+p{
+  color: red;
+}
 </style>
 
 </head>
@@ -41,7 +43,7 @@ form{
        <td>
         <div class="form-group">
          <label for="">Hospital-Name:</label>
-         <input type="text" class="form-control" name="doctor_hospital_name" placeholder="Enter your hospital-name.">
+         <input type="text" class="form-control" name="doctor_hospital_name" placeholder="Enter your hospital-name." required>
         </div>
        </td>
       </tr>
@@ -63,7 +65,7 @@ form{
         <td>
          <div class="form-group">
           <label for="">License-Number:</label>
-          <input type="text" class="form-control" name="doctor_lic_no" placeholder="Enter your License-Number.">
+          <input type="text" class="form-control" name="doctor_lic_no" placeholder="Enter your License-Number." required>
          </div>
         </td>
        </tr>
@@ -81,6 +83,9 @@ form{
     </div>
     
     <div class="col-sm-3 col-md-3 col-lg-3">
+        <%if(errors != null){ for(var i=0; i< errors.length; i++){%>
+          <p><%=errors[i].msg%></p>
+          <%}}%>
     </div>
     
  </div>

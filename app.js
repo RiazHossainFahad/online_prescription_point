@@ -2,6 +2,7 @@
 var express          = require('express');
 var bodyParser       = require('body-parser');
 var expressSession   = require('express-session');
+var expressValidator = require('express-validator');
 var contactUs        = require.main.require('./controllers/contact_us'); 
 var signup           = require.main.require('./controllers/signup'); 
 var login            = require.main.require('./controllers/login'); 
@@ -24,7 +25,7 @@ app.use('/bootstrap',express.static(__dirname+'/node_modules/bootstrap/dist/'));
 app.use('/jquery',express.static(__dirname+'/node_modules/jquery/dist/'));
 app.use(express.static("public"));//for static file like images
 app.use(expressSession({secret:'super secret',saveUninitialized:true,resave:false}));
-
+app.use(expressValidator());
 
 app.use('/contact_us', contactUs);
 app.use('/signup',signup);                                                                     
@@ -36,8 +37,11 @@ app.use('/logout',logout);
                                                                     
 //ROUTES
 app.get('/',function(req,res){
- res.render('index');
- res.end();
+ var err = {
+  errors: req.session.errors
+ };
+ req.session.errors = null;
+ res.render('index', err);
 });
 
 //server listen

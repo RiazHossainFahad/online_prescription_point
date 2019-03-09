@@ -47,7 +47,9 @@
 form{
   margin: 2%;
 }
-
+p{
+  color: red;
+}
 a{
   margin-left: 2%;
   color: firebrick;
@@ -65,7 +67,6 @@ a{
     <table class="table table-bordered table-hover">
      <tr style="text-align: center">
       <td colspan="6" class="active">
-        <h2><%=error%></h2>
         <h2>Sign Up</h2>
       </td>
      </tr>
@@ -177,6 +178,10 @@ a{
    </form>
   </div>
   <div class="col-sm-2">
+      <%if(errors != null){ for(var i=0; i< errors.length; i++){%>
+        <p><%=errors[i].msg%></p>
+        <%}}%>
+    
   </div>
 
 </div>

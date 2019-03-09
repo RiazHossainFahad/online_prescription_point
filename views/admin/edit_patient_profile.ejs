@@ -38,6 +38,9 @@
   .btn-danger{
     margin-left: 2%;
     }
+    p{
+      color: red;
+    }
   </style>
 
 <style>
@@ -139,6 +142,9 @@ a{
    </form>
   </div>
   <div class="col-sm-2">
+      <%if(errors != null){ for(var i=0; i< errors.length; i++){%>
+        <p><%=errors[i].msg%></p>
+        <%}}%>
   </div>
 
 </div>

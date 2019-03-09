@@ -33,12 +33,18 @@
 		padding-left: 3%;
 		color: darkred;
 	}
+	p{
+		text-align: center;
+		color: red;
+	}
 	</style>
 
 </head>
 <body>
 	<div class="container">
-
+			<%if(errors != null){ for(var i=0; i< errors.length; i++){%>
+				<p><%=errors[i].msg%></p>
+				<%}}%>
 				<h4><%= add_info.user_hospital%></h4>
   		<h5>Dr. <%= user.user_name%></h5>
   		<h5>Email: <%= user.user_email%></h5>

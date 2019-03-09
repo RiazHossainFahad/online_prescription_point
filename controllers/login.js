@@ -4,16 +4,26 @@ var router    = express.Router();
 
 //ROUTES
 router.get('/',(req,res) => {
-res.render('login/index',{success:false,error: req.session.error});
-req.session.error = null;
+ var error = {
+  errors: req.session.errors
+ };
+ req.session.errors = null;
+res.render('login/index',error);
 });
 
 router.post('/',(req,res) => {
+
+ req.check('u_email','Invalid e-mail address').isEmail();
+ req.check('u_pass','Empty Password').notEmpty().rtrim();
+
+ var err = req.validationErrors();
+
+ if(!err){
+  req.session.errors = null;
  var user={
   u_email: req.body.u_email,
   u_pass: req.body.u_pass
  };
-
 userModel.validate(user,function(result){
  if(result.user_id != null){
   req.session.u_id   = result.user_id;
@@ -25,12 +35,14 @@ userModel.validate(user,function(result){
   }else
   res.redirect('/home');
  }
-
  else{
-  req.session.error = "invalid user";
   res.redirect('/login');
  }
 });
+}else{
+ req.session.errors = err;
+ res.redirect('/login');
+}
 
 });
 
