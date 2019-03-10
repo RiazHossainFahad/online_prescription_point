@@ -11,7 +11,6 @@ router.get('*', function(req, res, next){
 	}
 });
 
-
 router.get('/',(req, res) => {
  patientModel.get(req.session.u_id, (result)=>{
   var data = {

@@ -5,7 +5,7 @@ router.get('/',(req, res) =>{
  req.session.u_id   = null;
  req.session.u_type = null;
  req.session.u_loc  = null;
- req.session.error  = null;
+ req.session.success  = null;
  res.redirect('/login');
 });
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2019 at 12:56 PM
+-- Generation Time: Mar 10, 2019 at 06:18 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -43,10 +43,8 @@ CREATE TABLE `additional_info` (
 INSERT INTO `additional_info` (`id`, `user_id`, `user_hospital`, `user_degree`, `user_license_no`) VALUES
 (5, 16, 'Appollo hospital', 'MBBS', 'lic-0301'),
 (7, 18, 'admin hosapital', 'MBChB', '1234'),
-(15, 20, 'Pratik\'s pharmacy', '', 'lic-0301'),
 (16, 21, 'Moon hospaital', 'MBBS', 'lic-1100'),
-(17, 22, 'Save Life', '', 'lic-1101'),
-(18, 23, 'Holy Family Hospital', 'MBChB', '1234');
+(17, 22, 'Save Life', '', 'lic-1101');
 
 -- --------------------------------------------------------
 
@@ -66,10 +64,7 @@ CREATE TABLE `contact_us` (
 
 INSERT INTO `contact_us` (`id`, `contact_us_email`, `contact_us_comment`) VALUES
 (1, 'mdfahad@gmail.com', 'this is a check'),
-(3, 'final@gmail.com', 'Hello check.'),
-(4, 'check@gmail.com', 'This is a email.'),
-(8, 'hell@gmail.com', 'Last one....'),
-(10, 'mdfahad@gmail.com', 'Hello Check.');
+(3, 'final@gmail.com', 'Hello check.');
 
 -- --------------------------------------------------------
 
@@ -98,11 +93,8 @@ CREATE TABLE `prescription_info` (
 --
 
 INSERT INTO `prescription_info` (`p_id`, `doctor_id`, `p_name`, `p_email`, `p_age`, `p_phone`, `p_gender`, `p_location`, `p_problem`, `p_medicine`, `v_date`, `r_message`, `r_status`) VALUES
-(2, 16, 'Fahad', 'patient@gmail.com', 24, '01521448961', 'Male', 'Banani', '1.Headache', '1.Etorix 60mg\r\n2. Ranitidine 25mg.', '28/02/2019', '', 1),
 (4, 16, 'xyz', 'xyz@gmail.com', 20, '01521448961', 'Male', 'Gulsan-2', 'Nothing', 'Napa Extra 500mg.', '08/03/2019', '', 1),
-(5, 16, 'new patient', 'new@gmail.com', 12, '01521448961', 'Male', 'Banani', 'lkj', '1.Napa', '09/03/2019', '', 1),
-(6, 16, 'new', 'email@email.com', 12, '01521448961', 'Male', 'Banani', '1.headache', '1. napa', '09/03/2019', '', 1),
-(7, 23, 'maruf', 'maruf@gmail.com', 21, '01521218884', 'Male', 'Banani', 'weakness', 'napa', '09/03/2019', '', 1);
+(5, 16, 'new patient', 'new@gmail.com', 12, '01521448961', 'Male', 'Banani', 'lkj', '1.Napa', '09/03/2019', '', 1);
 
 -- --------------------------------------------------------
 
@@ -130,10 +122,8 @@ CREATE TABLE `users_info` (
 INSERT INTO `users_info` (`user_id`, `user_name`, `user_email`, `user_type`, `user_relationship_status`, `user_password`, `user_location`, `user_gender`, `user_dob`, `user_account_status`) VALUES
 (16, 'Doctor', 'doctor@gmail.com', 'Doctor', 'Married', '1234', 'Airport', 'Male', '09/09/1980', 1),
 (18, 'Master Admin', 'admin@gmail.com', 'Admin', 'In a Relationship', '1234', 'Airport', 'Male', '01/04/1995', 1),
-(20, 'Pratik Mondal', 'pratik@gmail.com', 'Pharmacy', 'Single', '1234', 'Gulsan-2', 'Male', '09/04/1995', 1),
 (21, 'New Doctor', 'new@gmail.com', 'Doctor', 'Single', '1234', 'Khilkhet', 'Male', '25/03/1990', 1),
-(22, 'Pharmacy Man', 'pharmacy@gmail.com', 'Pharmacy', 'Single', '1234', 'Banani', 'Male', '12/01/1990', 1),
-(23, 'Pratik Mondal', 'pratikmondal6@hotmail.com', 'Doctor', 'Single', '1234', 'Banani', 'Male', '04/06/1996', 1);
+(22, 'Pharmacy Man', 'pharmacy@gmail.com', 'Pharmacy', 'Single', '1234', 'Banani', 'Male', '12/01/1990', 1);
 
 --
 -- Indexes for dumped tables
@@ -177,13 +167,13 @@ ALTER TABLE `additional_info`
 -- AUTO_INCREMENT for table `contact_us`
 --
 ALTER TABLE `contact_us`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `prescription_info`
 --
 ALTER TABLE `prescription_info`
-  MODIFY `p_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `p_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users_info`

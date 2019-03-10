@@ -54,7 +54,6 @@ userModel.validate(user,function(result){
  }
 });
 }else{
- console.log(req.session.success);
  req.session.errors = err;
  res.redirect('/login');
 }
